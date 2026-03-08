@@ -39,7 +39,22 @@ const PostCard = ({post}) => {
 
     const navigate = useNavigate()
 
-  return (
+    const [showShare, setShowShare] = useState(false)
+    const postUrl = `${window.location.origin}/post/${post._id}`
+
+    const handleShare = (type) => {
+        if(type === 'linkedin') {
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(postUrl)}`, '_blank')
+        } else if(type === 'whatsapp') {
+            window.open(`https://wa.me/?text=${encodeURIComponent(postUrl)}`, '_blank')
+        } else if(type === 'copy') {
+            navigator.clipboard.writeText(postUrl)
+            toast.success('Link copied!')
+        }
+        setShowShare(false)
+    }
+
+    return (
     <div className='bg-white rounded-xl shadow p-4 space-y-4 w-full max-w-2xl'>
         {/* User Info */}
         <div onClick={()=> navigate('/profile/' + post.user._id)} className='inline-flex items-center gap-3 cursor-pointer'>
@@ -72,10 +87,17 @@ const PostCard = ({post}) => {
                 <MessageCircle className="w-4 h-4"/>
                 <span>{12}</span>
             </div>
-            <div className='flex items-center gap-1'>
-                <Share2 className="w-4 h-4"/>
-                <span>{7}</span>
-            </div>
+                <div className='flex items-center gap-1 relative'>
+                    <Share2 className="w-4 h-4 cursor-pointer" onClick={() => setShowShare(true)} />
+                    {showShare && (
+                        <div className="absolute z-50 top-8 right-0 bg-white border border-gray-200 rounded shadow-md flex flex-col min-w-40">
+                            <button className="px-4 py-2 text-left hover:bg-gray-100 text-sm" onClick={() => handleShare('linkedin')}>Share on LinkedIn</button>
+                            <button className="px-4 py-2 text-left hover:bg-gray-100 text-sm" onClick={() => handleShare('whatsapp')}>Share on WhatsApp</button>
+                            <button className="px-4 py-2 text-left hover:bg-gray-100 text-sm" onClick={() => handleShare('copy')}>Copy Link</button>
+                            <button className="px-4 py-2 text-left text-red-500 hover:bg-gray-100 text-sm" onClick={() => setShowShare(false)}>Close</button>
+                        </div>
+                    )}
+                </div>
 
         </div>
 
