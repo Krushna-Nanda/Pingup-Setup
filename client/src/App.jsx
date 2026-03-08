@@ -8,6 +8,7 @@ import Connections from './pages/Connections'
 import Discover from './pages/Discover'
 import Profile from './pages/Profile'
 import CreatePost from './pages/CreatePost'
+import SinglePost from './pages/SinglePost'
 import {useUser, useAuth} from '@clerk/clerk-react'
 import Layout from './pages/Layout'
 import toast, {Toaster} from 'react-hot-toast'
@@ -77,6 +78,7 @@ const App = () => {
           <Route path='profile/:profileId' element={<Profile/>}/>
           <Route path='create-post' element={<CreatePost/>}/>
         </Route>
+        <Route path='post/:postId' element={<SinglePost/>}/>
       </Routes>
     </>
   )
