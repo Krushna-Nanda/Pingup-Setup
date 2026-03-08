@@ -19,11 +19,11 @@ const Login = () => {
                     <div className='flex'>
                         {Array(5).fill(0).map((_, i)=>(<Star key={i} className='size-4 md:size-4.5 text-transparent fill-amber-500'/>))}
                     </div>
-                    <p>Used by 12k+ developers</p>
+                    <p>Used by 10k+ developers</p>
                 </div>
             </div>
             <h1 className='text-3xl md:text-6xl md:pb-2 font-bold bg-gradient-to-r from-indigo-950 to-indigo-800 bg-clip-text text-transparent'>More than just friends truly connect</h1>
-            <p className='text-xl md:text-3xl text-indigo-900 max-w-72 md:max-w-md'>connect with global community on pingup.</p>
+            <p className='text-xl md:text-3xl text-indigo-900 max-w-72 md:max-w-md'>connect with global community on ZingUp.</p>
         </div>
         <span className='md:h-10'></span>
       </div>
