@@ -22,15 +22,15 @@ const Sidebar = ({sidebarOpen, setSidebarOpen}) => {
 
             <MenuItems setSidebarOpen={setSidebarOpen}/>
 
-            {/* Theme Toggle */}
-            <div className='flex justify-center mt-8 mb-2'>
-              <ThemeToggle />
-            </div>
-
-            <Link to='/create-post' className='flex items-center justify-center gap-2 py-2.5 mt-6 mx-6 rounded-lg  bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-700 hover:to-purple-800 active:scale-95 transition text-white cursor-pointer'>
+            <Link to='/create-post' className='flex items-center justify-center gap-2 py-2.5 mt-6 mx-6 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-700 hover:to-purple-800 active:scale-95 transition text-white cursor-pointer'>
                 <CirclePlus className='w-5 h-5'/>
                 Create Post
             </Link>
+
+            {/* Theme Toggle - full width, below Create Post */}
+            <div className='flex justify-center mt-3 mb-2 px-6'>
+              <ThemeToggle className='w-full' />
+            </div>
       </div>
 
         <div className='w-full border-t border-gray-200 dark:border-gray-800 p-4 px-7 flex items-center justify-between'>
