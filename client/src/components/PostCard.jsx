@@ -127,17 +127,17 @@ const PostCard = ({post: initialPost}) => {
     }
 
     return (
-    <div className='bg-white rounded-xl shadow p-4 space-y-4 w-full max-w-2xl'>
+    <div className='bg-white dark:bg-gray-800 rounded-xl shadow dark:shadow-gray-900 p-4 space-y-4 w-full max-w-2xl'>
         {/* User Info */}
         <div className='flex items-center justify-between'>
             <div onClick={()=> navigate('/profile/' + post.user._id)} className='inline-flex items-center gap-3 cursor-pointer'>
                 <img src={post.user.profile_picture} alt="" className='w-10 h-10 rounded-full shadow'/>
                 <div>
                     <div className='flex items-center space-x-1'>
-                        <span>{post.user.full_name}</span>
+                        <span className='dark:text-white'>{post.user.full_name}</span>
                         <BadgeCheck className='w-4 h-4 text-blue-500'/>
                     </div>
-                    <div className='text-gray-500 text-sm'>@{post.user.username} • {moment(post.createdAt).fromNow()}</div>
+                    <div className='text-gray-500 dark:text-gray-400 text-sm'>@{post.user.username} • {moment(post.createdAt).fromNow()}</div>
                 </div>
             </div>
             {currentUser._id === post.user._id && (
@@ -155,7 +155,7 @@ const PostCard = ({post: initialPost}) => {
             )}
         </div>
          {/* Content */}
-         {post.content && <div className='text-gray-800 text-sm whitespace-pre-line' dangerouslySetInnerHTML={{__html: postWithHashtags}}/>}
+         {post.content && <div className='text-gray-800 dark:text-gray-200 text-sm whitespace-pre-line' dangerouslySetInnerHTML={{__html: postWithHashtags}}/>}
 
        {/* Images */}
        <div className='grid grid-cols-2 gap-2'>
@@ -174,7 +174,7 @@ const PostCard = ({post: initialPost}) => {
        )}
 
         {/* Actions */}
-        <div className='flex items-center gap-4 text-gray-600 text-sm pt-2 border-t border-gray-300'>
+        <div className='flex items-center gap-4 text-gray-600 dark:text-gray-400 text-sm pt-2 border-t border-gray-300 dark:border-gray-700'>
             <div className='flex items-center gap-1'>
                 <Heart className={`w-4 h-4 cursor-pointer ${likes.includes(currentUser._id) && 'text-red-500 fill-red-500'}`} onClick={handleLike}/>
                 <span>{likes.length}</span>
@@ -199,7 +199,7 @@ const PostCard = ({post: initialPost}) => {
 
         {/* Comments Section */}
         {showComments && (
-            <div className='border-t border-gray-300 pt-4 space-y-4'>
+            <div className='border-t border-gray-300 dark:border-gray-700 pt-4 space-y-4'>
                 {/* Comment Input */}
                 <form onSubmit={handleAddComment} className='flex gap-2 items-end'>
                     <img src={currentUser.profile_picture} alt="" className='w-8 h-8 rounded-full'/>
@@ -209,7 +209,7 @@ const PostCard = ({post: initialPost}) => {
                             placeholder="Add a comment..." 
                             value={commentText}
                             onChange={(e) => setCommentText(e.target.value)}
-                            className='flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none text-sm'
+                            className='flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none text-sm'
                         />
                         <button 
                             type='submit' 
@@ -225,15 +225,15 @@ const PostCard = ({post: initialPost}) => {
                 <div className='space-y-3 max-h-96 overflow-y-auto'>
                     {post.comments && post.comments.length > 0 ? (
                         post.comments.map((comment) => (
-                            <div key={comment._id} className='flex gap-2 p-2 bg-gray-50 rounded-lg'>
+                            <div key={comment._id} className='flex gap-2 p-2 bg-gray-50 dark:bg-gray-700 rounded-lg'>
                                 <img src={comment.user.profile_picture} alt="" className='w-7 h-7 rounded-full'/>
                                 <div className='flex-1'>
                                     <div className='flex items-center gap-2'>
-                                        <span className='font-semibold text-sm'>{comment.user.full_name}</span>
-                                        <span className='text-xs text-gray-500'>@{comment.user.username}</span>
-                                        <span className='text-xs text-gray-500'>{moment(comment.createdAt).fromNow()}</span>
+                                        <span className='font-semibold text-sm dark:text-white'>{comment.user.full_name}</span>
+                                        <span className='text-xs text-gray-500 dark:text-gray-400'>@{comment.user.username}</span>
+                                        <span className='text-xs text-gray-500 dark:text-gray-400'>{moment(comment.createdAt).fromNow()}</span>
                                     </div>
-                                    <p className='text-sm text-gray-700 mt-1'>{comment.content}</p>
+                                    <p className='text-sm text-gray-700 dark:text-gray-300 mt-1'>{comment.content}</p>
                                 </div>
                                 {currentUser._id === comment.user._id && (
                                     <button 
