@@ -14,8 +14,10 @@ export const ThemeProvider = ({ children }) => {
   useEffect(() => {
     if (theme === 'dark') {
       document.documentElement.classList.add('dark')
+      document.body.classList.add('dark')
     } else {
       document.documentElement.classList.remove('dark')
+      document.body.classList.remove('dark')
     }
     localStorage.setItem('theme', theme)
   }, [theme])

@@ -9,7 +9,7 @@ const ThemeToggle = ({className = ''}) => {
   return (
     <button
       onClick={toggleTheme}
-      className={`flex items-center gap-2 px-3 py-1.5 rounded-full border transition shadow-sm font-semibold text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400 ${
+      className={`flex items-center gap-2 w-full justify-center px-3 py-2 rounded-lg border transition shadow-sm font-semibold text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400 h-[44px] ${
         isDark
           ? 'bg-gray-900 border-gray-700 text-yellow-300 hover:bg-gray-800'
           : 'bg-white border-gray-200 text-indigo-700 hover:bg-gray-100'
