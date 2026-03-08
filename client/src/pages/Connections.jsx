@@ -63,21 +63,21 @@ const Connections = () => {
   },[])
 
   return (
-    <div className='min-h-screen bg-slate-50'>
+    <div className='min-h-screen bg-slate-50 dark:bg-gray-900'>
       <div className='max-w-6xl mx-auto p-6'>
 
       {/* Title */}
       <div className='mb-8'>
-          <h1 className='text-3xl font-bold text-slate-900 mb-2'>Connections</h1>
-          <p className='text-slate-600'>Manage your network and discover new connections</p>
+          <h1 className='text-3xl font-bold text-slate-900 dark:text-white mb-2'>Connections</h1>
+          <p className='text-slate-600 dark:text-gray-400'>Manage your network and discover new connections</p>
       </div>
 
       {/* Counts */}
       <div className='mb-8 flex flex-wrap gap-6'>
         {dataArray.map((item, index)=>(
-          <div key={index} className='flex flex-col items-center justify-center gap-1 border h-20 w-40 border-gray-200 bg-white shadow rounded-md'>
-            <b>{item.value.length}</b>
-            <p className='text-slate-600'>{item.label}</p>
+          <div key={index} className='flex flex-col items-center justify-center gap-1 border h-20 w-40 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow dark:shadow-gray-800 rounded-md'>
+            <b className='dark:text-white'>{item.value.length}</b>
+            <p className='text-slate-600 dark:text-gray-400'>{item.label}</p>
           </div>
         ))}
       </div>
