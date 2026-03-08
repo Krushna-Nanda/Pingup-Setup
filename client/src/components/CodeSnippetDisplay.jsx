@@ -24,10 +24,10 @@ const CodeSnippetDisplay = ({ snippet }) => {
 
   return (
     <div
-      className={`rounded-lg overflow-hidden border ${
+      className={`rounded-xl overflow-hidden border shadow ${
         isDarkTheme
-          ? 'bg-gray-900 border-gray-700'
-          : 'bg-gray-50 border-gray-200'
+          ? 'bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 border-gray-700'
+          : 'bg-gradient-to-br from-white via-gray-50 to-white border-gray-200'
       }`}
     >
       {/* Header */}
@@ -40,18 +40,31 @@ const CodeSnippetDisplay = ({ snippet }) => {
       >
         <div className='flex items-center gap-3'>
           <span
-            className={`text-sm font-semibold ${
-              isDarkTheme ? 'text-gray-300' : 'text-gray-700'
+            className={`text-base font-bold tracking-wide ${
+              isDarkTheme ? 'text-white' : 'text-gray-900'
             }`}
           >
             {snippet.title}
           </span>
           <span
-            className={`text-xs px-2 py-1 rounded ${
-              isDarkTheme
-                ? 'bg-indigo-900/50 text-indigo-300'
-                : 'bg-indigo-100 text-indigo-700'
+            className={`text-sm font-extrabold px-3 py-1 rounded-full shadow transition-all duration-200 border-2 uppercase tracking-wider ${
+              snippet.language === 'javascript'
+                ? isDarkTheme
+                  ? 'bg-yellow-400/20 border-yellow-400 text-yellow-300'
+                  : 'bg-yellow-100 border-yellow-400 text-yellow-700'
+              : snippet.language === 'python'
+                ? isDarkTheme
+                  ? 'bg-blue-400/20 border-blue-400 text-blue-200'
+                  : 'bg-blue-100 border-blue-400 text-blue-700'
+              : snippet.language === 'java'
+                ? isDarkTheme
+                  ? 'bg-red-400/20 border-red-400 text-red-200'
+                  : 'bg-red-100 border-red-400 text-red-700'
+              : isDarkTheme
+                ? 'bg-indigo-900/50 border-indigo-400 text-indigo-200'
+                : 'bg-indigo-100 border-indigo-400 text-indigo-700'
             }`}
+            style={{letterSpacing: '0.08em'}}
           >
             {snippet.language}
           </span>
@@ -97,11 +110,12 @@ const CodeSnippetDisplay = ({ snippet }) => {
 
       {/* Code */}
       <pre
-        className={`p-4 overflow-x-auto text-sm font-mono ${
+        className={`p-4 overflow-x-auto text-sm font-mono rounded-b-xl ${
           isDarkTheme
-            ? 'bg-gray-900 text-gray-100'
+            ? 'bg-gray-950 text-gray-100'
             : 'bg-white text-gray-900'
         }`}
+        style={{fontSize: '1.05em', lineHeight: '1.7'}}
       >
         <code>{snippet.code}</code>
       </pre>
