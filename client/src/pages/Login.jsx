@@ -1,7 +1,8 @@
 import React from 'react'
 import { assets } from '../assets/assets'
-import { Star } from 'lucide-react'
+import { Star, Zap } from 'lucide-react'
 import {SignIn} from '@clerk/clerk-react'
+import TypeWriter from '../components/TypeWriter'
 
 const Login = () => {
   return (
@@ -22,8 +23,16 @@ const Login = () => {
                     <p className='text-gray-700 dark:text-gray-300 text-sm'>Used by 10k+ developers</p>
                 </div>
             </div>
-            <h1 className='text-3xl md:text-6xl md:pb-2 font-bold bg-gradient-to-r from-indigo-600 to-indigo-400 bg-clip-text text-transparent dark:from-indigo-400 dark:to-indigo-300'>Build. Code. Collaborate.</h1>
-            <p className='text-xl md:text-3xl text-indigo-600 dark:text-indigo-400 max-w-72 md:max-w-md'>Where tech enthusiasts connect and innovate together.</p>
+            <h1 className='text-3xl md:text-6xl md:pb-2 font-bold'>
+              <span className='bg-gradient-to-r from-indigo-600 to-indigo-400 bg-clip-text text-transparent dark:from-indigo-400 dark:to-indigo-300'>Build. Code. </span>
+              <TypeWriter text="Collaborate." speed={100} className='bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent dark:from-purple-400 dark:to-pink-400'/>
+            </h1>
+            <div className='mt-6 md:mt-8 flex items-start gap-3'>
+              <Zap className='size-6 md:size-8 text-indigo-600 dark:text-indigo-400 flex-shrink-0 mt-1'/>
+              <p className='text-lg md:text-2xl font-semibold bg-gradient-to-r from-gray-800 via-indigo-600 to-purple-600 bg-clip-text text-transparent dark:from-gray-200 dark:via-indigo-300 dark:to-purple-300 max-w-lg leading-relaxed'>
+                Where tech enthusiasts connect and innovate together
+              </p>
+            </div>
         </div>
         <span className='md:h-10'></span>
       </div>
